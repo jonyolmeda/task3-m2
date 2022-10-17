@@ -1,6 +1,5 @@
-let datos = {
-  currentDate: "2022-01-01",
-  events: [
+ const currentDate = "2022-01-01"
+ const events=[
     {
       _id: 1,
       image:
@@ -186,5 +185,5 @@ let datos = {
       estimate: 9000,
       price: 250,
     },
-  ],
-};
+  ]
+;
