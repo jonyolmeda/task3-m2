@@ -2,11 +2,12 @@ const tarjetas = document.getElementById("contenedor");
 const input = document.getElementById("input-texto");
 const checkbox = document.getElementById(`checkbox`);
 
+let upcoming = events.filter((event) => event.date > currentDate);
+
 //Cree una función para imprimir las tarjetas en la página Home.
-//if (currentDate > events.date) {
+ 
 function imprimir(array, contenedor) {
-  array.forEach((e) => {
-    if (currentDate < events.date) {
+  array.forEach((e) => { {
       contenedor.innerHTML += `
   <div class="card col-3 bg-black">
       <div class="card-body">
@@ -19,12 +20,11 @@ function imprimir(array, contenedor) {
       </div>
       <a href="details.html" class="btn btn-danger">Details</a>
   </div>
-`;
-      imprimir(events, tarjetas);
+`;  
     }
   });
 }
-
+imprimir(upcoming, tarjetas);
 //Función creada para arrojar un mensaje cuando no existe coincidencia.
 
 function notCoincidence(array, contenedor) {
@@ -59,28 +59,28 @@ categorias.forEach((e) => {
   `;
 });
 
-let listaChequeada = [];
+let listaChequeada2 = [];
 
 checkbox.addEventListener(`change`, (e) => {
   if (e.target.checked) {
-    listaChequeada = listaChequeada.concat(
-      events.filter((evento) =>
+    listaChequeada2 = listaChequeada2.concat(
+      upcoming.filter((evento) =>
         evento.category.toLowerCase().includes(e.target.id.toLowerCase())
       )
     );
-    console.log(listaChequeada);
+    console.log(listaChequeada2);
     tarjetas.innerHTML = "";
-    imprimir(listaChequeada, tarjetas);
+    imprimir(listaChequeada2, tarjetas);
   } else if (!e.target.checked) {
-    listaChequeada = listaChequeada.filter(
+    listaChequeada2 = listaChequeada2.filter(
       (evento) =>
         !evento.category.toLowerCase().includes(e.target.id.toLowerCase())
     );
     tarjetas.innerHTML = "";
-    imprimir(listaChequeada, tarjetas);
+    imprimir(listaChequeada2, tarjetas);
   }
 
-  if (listaChequeada.length === 0) {
-    imprimir(events, tarjetas);
+  if (listaChequeada2.length === 0) {
+    imprimir(upcoming, tarjetas);
   }
 });
