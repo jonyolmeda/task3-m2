@@ -59,28 +59,28 @@ categorias.forEach((e) => {
   `;
 });
 
-let listaChequeada2 = [];
+let listaChequeadaPU = [];
 
 checkbox.addEventListener(`change`, (e) => {
   if (e.target.checked) {
-    listaChequeada2 = listaChequeada2.concat(
+    listaChequeadaPU = listaChequeadaPU.concat(
       upcoming.filter((evento) =>
         evento.category.toLowerCase().includes(e.target.id.toLowerCase())
       )
     );
-    console.log(listaChequeada2);
+    console.log(listaChequeadaPU);
     tarjetas.innerHTML = "";
-    imprimir(listaChequeada2, tarjetas);
+    imprimir(listaChequeadaPU, tarjetas);
   } else if (!e.target.checked) {
-    listaChequeada2 = listaChequeada2.filter(
+    listaChequeadaPU = listaChequeadaPU.filter(
       (evento) =>
         !evento.category.toLowerCase().includes(e.target.id.toLowerCase())
     );
     tarjetas.innerHTML = "";
-    imprimir(listaChequeada2, tarjetas);
+    imprimir(listaChequeadaPU, tarjetas);
   }
 
-  if (listaChequeada2.length === 0) {
+  if (listaChequeadaPU.length === 0) {
     imprimir(upcoming, tarjetas);
   }
 });
