@@ -30,7 +30,7 @@ imprimir(upcoming, tarjetas);
 function notCoincidence(array, contenedor) {
   if (array <= 0) {
     contenedor.innerHTML = `
-    <h2>Sin coincidencias</h2>
+    <h2 class="text-muted fs-4 fw-bold">No hay coincidencias</h2>
     `;
   }
 }

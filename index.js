@@ -23,10 +23,10 @@ function imprimir(array, contenedor) {
 imprimir(events, tarjetas);
 //Función creada para arrojar un mensaje cuando no existe coincidencia.
 
-function notCoincidence(array, contenedor) {
+function noCoincide(array, contenedor) {
   if (array <= 0) {
     contenedor.innerHTML = `
-    <h2>Sin coincidencias</h2>
+    <h2 class="text-muted fs-4 fw-bold">No hay coincidencias</h2>
     `;
   }
 }
@@ -38,7 +38,7 @@ input.addEventListener(`keyup`, (e) => {
     nombres.name.toLowerCase().includes(e.target.value.toLowerCase())
   );
   tarjetas.innerHTML = "";
-  notCoincidence(elementosFiltrados, tarjetas);
+  noCoincide(elementosFiltrados, tarjetas);
   imprimir(elementosFiltrados, tarjetas);
 });
 

@@ -13,6 +13,7 @@ function impTarjetaDetails(array, contenedor) {
       <p>Place: ${e.place}</p>
       <p>Capacity: ${e.capacity}</p>
       <p>Estimate: ${e.estimate}</p>
+      <p>Assistance: ${e.assistance}</p>
       <p>Price: $${e.price}</p>
     </div>
   </div>
@@ -32,3 +33,4 @@ eventos = events.filter(element => element._id === id)
 impTarjetaDetails(eventos, tarjetaDetails);
 }
 infoEventos()
+
