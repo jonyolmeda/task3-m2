@@ -31,7 +31,9 @@ function noCoincide(array, contenedor) {
   }
 }
 //      INPUT
-//Por medio del .filter filtro los nombres de los eventos; le doy un espacio vacío y aplico la función para que no haya coincidencia para después imprimirlas
+//Por medio del .filter filtro los nombres de los eventos y los comparo; las coincidencias se guardan en elementosFiltrados.
+//Vacio el contenedor para no guardar o pisar tarjetas ya existentes; si no hay coincidencias no da el cartel de la fn noCoincide;
+//En última instancia se imprimen las coincidencias.
 
 input.addEventListener(`keyup`, (e) => {
   elementosFiltrados = events.filter((nombres) =>
@@ -43,8 +45,10 @@ input.addEventListener(`keyup`, (e) => {
 });
 
 //      CHECKBOX
+// A la variable categoria le construí un array con el .from para poder tener en un array los categorias
+//así después la podía recorrer con el .forEach e imprimir los checkbox con sus categorias.
 
-let categorias = Array.from(new Set(events.map((objeto) => objeto.category)));
+let categorias = new Set(events.map((objeto) => objeto.category));
 
 categorias.forEach((e) => {
   checkbox.innerHTML += `
@@ -55,26 +59,38 @@ categorias.forEach((e) => {
   `;
 });
 
+//A continuación creé un array vacio para guardar el estado de los checkbox; cada vez que el checkbox cambie
+//Va a ejecutar (o no) las acciones dentro de las llaves.
+
 let listaChequeada = [];
 
 checkbox.addEventListener(`change`, (e) => {
   if (e.target.checked) {
+    let categoriaCheckbox = e.target.id.toLowerCase()
     listaChequeada = listaChequeada.concat(
       events.filter((evento) =>
-        evento.category.toLowerCase().includes(e.target.id.toLowerCase())
+        evento.category.toLowerCase().includes(categoriaCheckbox)
       )
     );
-    console.log(listaChequeada);
     tarjetas.innerHTML = "";
     imprimir(listaChequeada, tarjetas);
+
+//Junté cada coincidencia con el .concat, extraigo la categoria en minuscula y busco si hay coincidencia entre el Id
+//(también en munúscula) y las categorias recorridas en events; en cada cambio de evento (change) se limpia el contenedor de tarjetas.
+//El último paso se ejcuta la fn (que tiene como argumento el array filtrado y el contenedor de tarjetas).
+
   } else if (!e.target.checked) {
     listaChequeada = listaChequeada.filter(
       (evento) =>
-        !evento.category.toLowerCase().includes(e.target.id.toLowerCase())
+        !evento.category.toLowerCase().includes(categoriaCheckbox)
     );
     tarjetas.innerHTML = "";
     imprimir(listaChequeada, tarjetas);
   }
+
+//Cuando se "descheckea" se ejecuta el else if, se filtra los que no coincidan con el Id.
+
+//Si la longitud del array es 0 se reimprimen todas las tarjetas.
 
   if (listaChequeada.length === 0) {
     imprimir(events, tarjetas);

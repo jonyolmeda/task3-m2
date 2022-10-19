@@ -1,4 +1,8 @@
+//Asigne la variable al elemto que traigo de HTML.
+
 const tarjetaDetails = document.getElementById(`tarjeta-details`)
+
+//Cree una función para imprimir la tarjeta en la página Details.
 
 function impTarjetaDetails(array, contenedor) {
     array.forEach((e) => {
@@ -21,6 +25,8 @@ function impTarjetaDetails(array, contenedor) {
     });
   }
 
+  //En la siguiente fn le asigne un array vacio a la variable eventos, para después filtrar los id y en caso
+  //que coincida imprimir la tarjeta correspondiente en pantalla.
 
 function infoEventos() {
 
