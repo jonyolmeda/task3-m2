@@ -18,7 +18,7 @@ function imprimir(array, contenedor) {
           <p class="card-text text-light">${e.description}t.</p>
           <p class="card-text text-light">Price: $${e.price}</p>
       </div>
-      <a href="details.html" class="btn btn-danger">Details</a>
+      <a href="details.html?id=${e._id}" class="btn btn-danger">Details</a>
   </div>
 `;  
     }
