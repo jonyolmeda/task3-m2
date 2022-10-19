@@ -38,7 +38,7 @@ function notCoincidence(array, contenedor) {
 //Por medio del .filter filtro los nombres de los eventos; le doy un espacio vacío y aplico la función para que no haya coincidencia para después imprimirlas
 
 input.addEventListener(`keyup`, (e) => {
-  elementosFiltrados = events.filter((nombres) =>
+  elementosFiltrados = listaChequeadaPU.filter((nombres) =>
     nombres.name.toLowerCase().includes(e.target.value.toLowerCase())
   );
   tarjetas.innerHTML = "";
